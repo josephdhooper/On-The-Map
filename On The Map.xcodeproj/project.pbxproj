@@ -16,6 +16,7 @@
 		A430FA521C8E105400A7C021 /* On_The_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430FA511C8E105400A7C021 /* On_The_MapUITests.swift */; };
 		A43581511C9720CD00A2C267 /* OTMMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43581501C9720CD00A2C267 /* OTMMapViewController.swift */; };
 		A43581531C97215C00A2C267 /* OTMPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43581521C97215C00A2C267 /* OTMPinViewController.swift */; };
+		A45353421C99C923007F18BD /* udacity.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A45353411C99C923007F18BD /* udacity.pdf */; };
 		A4CD71F01C95B11800A3764B /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71EF1C95B11800A3764B /* UdacityClient.swift */; };
 		A4CD71F51C9613D000A3764B /* OTMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71F41C9613D000A3764B /* OTMTableViewController.swift */; };
 		A4CD71F71C961C4400A3764B /* OTMStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71F61C961C4400A3764B /* OTMStudents.swift */; };
@@ -55,6 +56,7 @@
 		A430FA531C8E105400A7C021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43581501C9720CD00A2C267 /* OTMMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMMapViewController.swift; sourceTree = "<group>"; };
 		A43581521C97215C00A2C267 /* OTMPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OTMPinViewController.swift; path = "On The Map/OTMPinViewController.swift"; sourceTree = "<group>"; };
+		A45353411C99C923007F18BD /* udacity.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = udacity.pdf; path = "../../../Castillo/On the Map/Assets.xcassets/Udacity U.imageset/udacity.pdf"; sourceTree = "<group>"; };
 		A4CD71EF1C95B11800A3764B /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
 		A4CD71F41C9613D000A3764B /* OTMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMTableViewController.swift; sourceTree = "<group>"; };
 		A4CD71F61C961C4400A3764B /* OTMStudents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMStudents.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				A430FA3A1C8E105400A7C021 /* LaunchScreen.storyboard */,
 				A430FA3D1C8E105400A7C021 /* Info.plist */,
 				A430FA381C8E105400A7C021 /* Assets.xcassets */,
+				A45353411C99C923007F18BD /* udacity.pdf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			files = (
 				A430FA3C1C8E105400A7C021 /* LaunchScreen.storyboard in Resources */,
 				A430FA391C8E105400A7C021 /* Assets.xcassets in Resources */,
+				A45353421C99C923007F18BD /* udacity.pdf in Resources */,
 				A430FA371C8E105400A7C021 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
