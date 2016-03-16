@@ -18,6 +18,7 @@
 		A4CD71F01C95B11800A3764B /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71EF1C95B11800A3764B /* UdacityClient.swift */; };
 		A4CD71F51C9613D000A3764B /* OTMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71F41C9613D000A3764B /* OTMTableViewController.swift */; };
 		A4CD71F71C961C4400A3764B /* OTMStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71F61C961C4400A3764B /* OTMStudents.swift */; };
+		A4CEBBA41C9A1EC10013DAED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A430FA381C8E105400A7C021 /* Assets.xcassets */; };
 		A4FEC9881C9340D4000155F0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FEC9871C9340D4000155F0 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -277,6 +278,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A430FA3C1C8E105400A7C021 /* LaunchScreen.storyboard in Resources */,
+				A4CEBBA41C9A1EC10013DAED /* Assets.xcassets in Resources */,
 				A430FA371C8E105400A7C021 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
