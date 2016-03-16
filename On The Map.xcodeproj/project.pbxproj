@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		A430FA321C8E105400A7C021 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430FA311C8E105400A7C021 /* AppDelegate.swift */; };
-		A430FA341C8E105400A7C021 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430FA331C8E105400A7C021 /* ViewController.swift */; };
+		A430FA341C8E105400A7C021 /* OTMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430FA331C8E105400A7C021 /* OTMLoginViewController.swift */; };
 		A430FA371C8E105400A7C021 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A430FA351C8E105400A7C021 /* Main.storyboard */; };
 		A430FA391C8E105400A7C021 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A430FA381C8E105400A7C021 /* Assets.xcassets */; };
 		A430FA3C1C8E105400A7C021 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A430FA3A1C8E105400A7C021 /* LaunchScreen.storyboard */; };
 		A430FA471C8E105400A7C021 /* On_The_MapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430FA461C8E105400A7C021 /* On_The_MapTests.swift */; };
 		A430FA521C8E105400A7C021 /* On_The_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430FA511C8E105400A7C021 /* On_The_MapUITests.swift */; };
+		A43581511C9720CD00A2C267 /* OTMMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43581501C9720CD00A2C267 /* OTMMapViewController.swift */; };
+		A43581531C97215C00A2C267 /* OTMPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43581521C97215C00A2C267 /* OTMPinViewController.swift */; };
+		A4CD71F01C95B11800A3764B /* UdacityClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71EF1C95B11800A3764B /* UdacityClient.swift */; };
+		A4CD71F51C9613D000A3764B /* OTMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71F41C9613D000A3764B /* OTMTableViewController.swift */; };
+		A4CD71F71C961C4400A3764B /* OTMStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71F61C961C4400A3764B /* OTMStudents.swift */; };
+		A4FEC9881C9340D4000155F0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4FEC9871C9340D4000155F0 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +42,7 @@
 /* Begin PBXFileReference section */
 		A430FA2E1C8E105400A7C021 /* On The Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On The Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A430FA311C8E105400A7C021 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A430FA331C8E105400A7C021 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A430FA331C8E105400A7C021 /* OTMLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OTMLoginViewController.swift; path = "On The Map/OTMLoginViewController.swift"; sourceTree = "<group>"; };
 		A430FA361C8E105400A7C021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A430FA381C8E105400A7C021 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A430FA3B1C8E105400A7C021 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +53,12 @@
 		A430FA4D1C8E105400A7C021 /* On The MapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "On The MapUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A430FA511C8E105400A7C021 /* On_The_MapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = On_The_MapUITests.swift; sourceTree = "<group>"; };
 		A430FA531C8E105400A7C021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A43581501C9720CD00A2C267 /* OTMMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMMapViewController.swift; sourceTree = "<group>"; };
+		A43581521C97215C00A2C267 /* OTMPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OTMPinViewController.swift; path = "On The Map/OTMPinViewController.swift"; sourceTree = "<group>"; };
+		A4CD71EF1C95B11800A3764B /* UdacityClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityClient.swift; sourceTree = "<group>"; };
+		A4CD71F41C9613D000A3764B /* OTMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMTableViewController.swift; sourceTree = "<group>"; };
+		A4CD71F61C961C4400A3764B /* OTMStudents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMStudents.swift; sourceTree = "<group>"; };
+		A4FEC9871C9340D4000155F0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4FEC9881C9340D4000155F0 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,9 +87,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A412B4F71C8E896F0017A51C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A430FA311C8E105400A7C021 /* AppDelegate.swift */,
+				A430FA351C8E105400A7C021 /* Main.storyboard */,
+				A430FA3A1C8E105400A7C021 /* LaunchScreen.storyboard */,
+				A430FA3D1C8E105400A7C021 /* Info.plist */,
+				A430FA381C8E105400A7C021 /* Assets.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		A430FA251C8E105400A7C021 = {
 			isa = PBXGroup;
 			children = (
+				A4FEC9871C9340D4000155F0 /* MapKit.framework */,
 				A430FA301C8E105400A7C021 /* On The Map */,
 				A430FA451C8E105400A7C021 /* On The MapTests */,
 				A430FA501C8E105400A7C021 /* On The MapUITests */,
@@ -97,12 +123,9 @@
 		A430FA301C8E105400A7C021 /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
-				A430FA311C8E105400A7C021 /* AppDelegate.swift */,
-				A430FA331C8E105400A7C021 /* ViewController.swift */,
-				A430FA351C8E105400A7C021 /* Main.storyboard */,
-				A430FA381C8E105400A7C021 /* Assets.xcassets */,
-				A430FA3A1C8E105400A7C021 /* LaunchScreen.storyboard */,
-				A430FA3D1C8E105400A7C021 /* Info.plist */,
+				A4CD71F11C95B12600A3764B /* Model */,
+				A4CD71EE1C95ABB200A3764B /* Controller */,
+				A412B4F71C8E896F0017A51C /* Resources */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";
@@ -123,6 +146,28 @@
 				A430FA531C8E105400A7C021 /* Info.plist */,
 			);
 			path = "On The MapUITests";
+			sourceTree = "<group>";
+		};
+		A4CD71EE1C95ABB200A3764B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A4CD71F41C9613D000A3764B /* OTMTableViewController.swift */,
+				A430FA331C8E105400A7C021 /* OTMLoginViewController.swift */,
+				A43581501C9720CD00A2C267 /* OTMMapViewController.swift */,
+				A43581521C97215C00A2C267 /* OTMPinViewController.swift */,
+			);
+			name = Controller;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		A4CD71F11C95B12600A3764B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A4CD71EF1C95B11800A3764B /* UdacityClient.swift */,
+				A4CD71F61C961C4400A3764B /* OTMStudents.swift */,
+			);
+			name = Model;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +304,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A430FA341C8E105400A7C021 /* ViewController.swift in Sources */,
+				A430FA341C8E105400A7C021 /* OTMLoginViewController.swift in Sources */,
 				A430FA321C8E105400A7C021 /* AppDelegate.swift in Sources */,
+				A43581531C97215C00A2C267 /* OTMPinViewController.swift in Sources */,
+				A4CD71F71C961C4400A3764B /* OTMStudents.swift in Sources */,
+				A4CD71F51C9613D000A3764B /* OTMTableViewController.swift in Sources */,
+				A43581511C9720CD00A2C267 /* OTMMapViewController.swift in Sources */,
+				A4CD71F01C95B11800A3764B /* UdacityClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +496,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = "On The MapUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.josephdhooper.On-The-MapUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = "On The Map";
@@ -458,7 +507,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				INFOPLIST_FILE = "On The MapUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.josephdhooper.On-The-MapUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = "On The Map";
@@ -485,6 +533,7 @@
 				A430FA581C8E105400A7C021 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A430FA591C8E105400A7C021 /* Build configuration list for PBXNativeTarget "On The MapTests" */ = {
 			isa = XCConfigurationList;
@@ -493,6 +542,7 @@
 				A430FA5B1C8E105400A7C021 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A430FA5C1C8E105400A7C021 /* Build configuration list for PBXNativeTarget "On The MapUITests" */ = {
 			isa = XCConfigurationList;
@@ -501,6 +551,7 @@
 				A430FA5E1C8E105400A7C021 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
