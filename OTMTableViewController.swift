@@ -27,7 +27,14 @@ class OTMTableViewController: UITableViewController {
         cell.detailTextLabel?.text = studentInfo.linkUrl
         return cell
     }
-
+    
+    //Make URLS linkable and viewable
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let studentInfo = UdacityClient.sharedInstance().students[indexPath.row]
+        UIApplication.sharedApplication().openURL(NSURL(string: studentInfo.linkUrl)!)
+        
+    }
+    
     @IBAction func refreshButton(sender: UIBarButtonItem) {
         UdacityClient.sharedInstance().loadStudentInformation  { (success, errorString) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
@@ -55,4 +62,5 @@ class OTMTableViewController: UITableViewController {
         let loginController = self.storyboard!.instantiateViewControllerWithIdentifier("OTMLoginViewController") as! OTMLoginViewController
         presentViewController(loginController, animated: true, completion: nil)
     }
+    
 }

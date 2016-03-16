@@ -53,6 +53,8 @@ class OTMLoginViewController: UIViewController, UITextFieldDelegate {
        UdacityClient.sharedInstance().loginToUdacity(emailField.text!, password: passwordField.text!) { (success, errorString) -> Void in
             guard success else {
                 dispatch_async(dispatch_get_main_queue(), {
+                    self.activityIndicator.stopAnimating()
+
                     let alert = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
@@ -61,7 +63,6 @@ class OTMLoginViewController: UIViewController, UITextFieldDelegate {
             }
             
             dispatch_async(dispatch_get_main_queue(), {
-                self.activityIndicator.stopAnimating()
                 let tabBarController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
                 self.presentViewController(tabBarController, animated: true, completion: nil)
             })
