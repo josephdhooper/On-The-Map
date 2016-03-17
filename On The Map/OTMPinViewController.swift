@@ -4,27 +4,33 @@
 //
 //  Created by Joseph Hooper on 3/14/16.
 //  Copyright © 2016 josephdhooper. All rights reserved.
-//
+//  Code from http://stackoverflow.com/questions/24180954/how-to-hide-keyboard-in-swift-on-pressing-return-key was repurposed in the OTMPinViewController. Code from https://github.com/jarrodparkes/on-the-map was repurposed throught project.
 
 import UIKit
 import MapKit
+import CoreLocation
 
-class OTMPinViewController: UIViewController {
+class OTMPinViewController: UIViewController, MKMapViewDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var placemark: MKPlacemark!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         submitButton.enabled = false
+        self.mapView.delegate = self
+        self.locationTextField.delegate = self;
+        self.linkTextField.delegate = self;
+
     }
     
     override func viewWillAppear(animated: Bool) {
-        
+        activityIndicator.hidesWhenStopped = true
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
     
@@ -36,7 +42,7 @@ class OTMPinViewController: UIViewController {
     }
     
     @IBAction func findButtonPushed(sender: AnyObject) {
-        guard locationTextField.text != "" else {
+            guard locationTextField.text != "" else {
             let alert = UIAlertController(title: "Error", message: "Must enter a location.", preferredStyle: UIAlertControllerStyle.Alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
@@ -44,7 +50,10 @@ class OTMPinViewController: UIViewController {
         }
         
         let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(locationTextField.text!) { (placemarks, error) -> Void in
+        self.activityIndicator.startAnimating()
+        geocoder.geocodeAddressString(locationTextField.text!) { (placemarks, error)
+            -> Void in
+            self.activityIndicator.stopAnimating()
             guard error == nil else {
                 dispatch_async(dispatch_get_main_queue(), {
                     let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: UIAlertControllerStyle.Alert)
@@ -113,6 +122,11 @@ class OTMPinViewController: UIViewController {
     
     @IBAction func cancelButtonPushed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true);
+        return false;
     }
     
     // MARK: - Keyboard methods

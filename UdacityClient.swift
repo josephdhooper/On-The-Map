@@ -4,7 +4,7 @@
 //
 //  Created by Joseph Hooper on 3/13/16.
 //  Copyright © 2016 josephdhooper. All rights reserved.
-//
+//  Code from http://stackoverflow.com/questions/24180954/how-to-hide-keyboard-in-swift-on-pressing-return-key was repurposed in the OTMPinViewController. Code from https://github.com/jarrodparkes/on-the-map was repurposed throught project.
 
 import Foundation
 import MapKit
@@ -92,18 +92,11 @@ class UdacityClient: NSObject {
         }
         return Singleton.sharedInstance
     }
-    
-    func logout() {
-        accountKey = nil
-        firstName = nil
-        lastName = nil
-        sessionId = nil
-    }
 
     // Retrieve location data from Parse
     func loadStudentInformation(completionHandler: (success: Bool, errorString: String?) -> Void) {
-        _ = ["order": "-updatedAt"]
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
+        let parameters = ["order": "-updatedAt"]
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation" + UdacityClient.escapedParameters(parameters))!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = NSURLSession.sharedSession()
@@ -143,6 +136,7 @@ class UdacityClient: NSObject {
         }
         task.resume()
     }
+    
 
 func submitStudentInformation(mapString: String, mediaURL: String, placemark: MKPlacemark, completionHandler: (success: Bool, errorString: String?) -> Void) {
     let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
@@ -164,5 +158,21 @@ func submitStudentInformation(mapString: String, mediaURL: String, placemark: MK
     task.resume()
 }
 
+    class func escapedParameters(parameters: [String : AnyObject]) -> String {
+        
+        var urlVars = [String]()
+        
+        for (key, value) in parameters {
+            
+            let stringValue = "\(value)"
+            
+            let escapedValue = stringValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+            
+            urlVars += [key + "=" + "\(escapedValue!)"]
+            
+        }
+        
+        return (!urlVars.isEmpty ? "?" : "") + urlVars.joinWithSeparator("&")
+}
 }
 

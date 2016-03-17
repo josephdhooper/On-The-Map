@@ -4,49 +4,33 @@
 //
 //  Created by Joseph Hooper on 3/14/16.
 //  Copyright © 2016 josephdhooper. All rights reserved.
-//
+//  Code from http://stackoverflow.com/questions/24180954/how-to-hide-keyboard-in-swift-on-pressing-return-key was repurposed in the OTMPinViewController. Code from https://github.com/jarrodparkes/on-the-map was repurposed throught project.  
 
 import UIKit
 import MapKit
 import Foundation
 
 class OTMMapViewController: UIViewController, MKMapViewDelegate {
+    
 
     @IBOutlet weak var mapView: MKMapView!
+    
+    override func viewDidLoad()
+    {
+//        super.viewDidLoad()
+//        self.activityIndicator.startAnimating()
+//        self.activityIndicator.hidden = false
+        self.mapView.delegate = self
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         removeAnnotations()
         addAnnotations()
+   
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier("pin") as? MKPinAnnotationView
-        
-        if pinView == nil {
-            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-            pinView!.canShowCallout = true
-            pinView!.rightCalloutAccessoryView =
-                UIButton(type: .DetailDisclosure)
-        }
-        else {
-            pinView!.annotation = annotation
-        }
-        
-        return pinView
-    }
-    
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        if control == view.rightCalloutAccessoryView{
-            let app = UIApplication.sharedApplication()
-            if let toOpen = view.annotation?.subtitle!{
-                app.openURL(NSURL(string: toOpen)!)
-            }
-        }
-        
-    }
 
-    
     func removeAnnotations() {
         let annotationsNeedToRemove = mapView.annotations.filter { $0 !== mapView.userLocation }
         mapView.removeAnnotations(annotationsNeedToRemove)
@@ -72,7 +56,7 @@ class OTMMapViewController: UIViewController, MKMapViewDelegate {
         UdacityClient.sharedInstance().loadStudentInformation  { (success, errorString) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 if success {
-                    self.removeAnnotations()
+//                    self.removeAnnotations()
                     self.addAnnotations()
                 } else {
                     let alert = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
@@ -92,28 +76,42 @@ class OTMMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func logoutButton(sender: UIBarButtonItem) {
-        UdacityClient.sharedInstance().logout()
         let loginController = self.storyboard!.instantiateViewControllerWithIdentifier("OTMLoginViewController") as! OTMLoginViewController
         presentViewController(loginController, animated: true, completion: nil)
     }
-    
-    func submitNewPin() {
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation")!)
-        request.HTTPMethod = "POST"
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.HTTPBody = "{\"uniqueKey\": \"1234\", \"firstName\": \"John\", \"lastName\": \"Doe\",\"mapString\": \"Mountain View, CA\", \"mediaURL\": \"https://udacity.com\",\"latitude\": 40.0, \"longitude\": -100.0}".dataUsingEncoding(NSUTF8StringEncoding)
-        let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) { data, response, error in
-            guard error == nil else {
-                print("Error returned by request", error)
-                return
-            }
-            print(NSString(data: data!, encoding: NSUTF8StringEncoding))
-        }
-        task.resume()
-    }
 
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation {
+            return nil
+    }
+        let reuseId = "pin"
+        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId) as! MKPinAnnotationView?
+        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+        pinView!.canShowCallout = true
+        pinView!.rightCalloutAccessoryView = UIButton.init(type: .DetailDisclosure)
+    
+        return pinView
 }
+
+func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    let pin = view.annotation as! MKPointAnnotation?
+    let url = NSURL(string: pin!.subtitle!)
+    if url != nil && url!.scheme != "" {
+        UIApplication.sharedApplication().openURL(url!)
+    
+    } else {
+        
+        self.displayURLAlert()
+    }
+}
+    func displayURLAlert()
+    
+    {
+        let alert = UIAlertController.init(title:"Link Error", message:"Invalid link.", preferredStyle: UIAlertControllerStyle.Alert)
+        let okAction = UIAlertAction.init(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil)
+        alert.addAction(okAction)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+}
+
 
