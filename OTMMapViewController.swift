@@ -39,7 +39,7 @@ class OTMMapViewController: UIViewController, MKMapViewDelegate {
 
     func addAnnotations() {
         var annotations = [MKPointAnnotation]()
-        for studentInfo in UdacityClient.sharedInstance().students {
+        for studentInfo in APIClients.sharedInstance().students {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: studentInfo.latitude, longitude: studentInfo.longitude)
             annotation.title = "\(studentInfo.firstName) \(studentInfo.lastName)"
@@ -51,7 +51,7 @@ class OTMMapViewController: UIViewController, MKMapViewDelegate {
     
 
     @IBAction func refreshButton(sender: UIBarButtonItem) {
-        UdacityClient.sharedInstance().loadStudentInformation  { (success, errorString) -> Void in
+        APIClients.sharedInstance().loadStudentInformation  { (success, errorString) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 if success {
 //                    self.removeAnnotations()

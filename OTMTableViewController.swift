@@ -17,12 +17,12 @@ class OTMTableViewController: UITableViewController {
         tableView.reloadData()
 }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return UdacityClient.sharedInstance().students.count
+        return APIClients.sharedInstance().students.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LocationPin")!
-        let studentInfo = UdacityClient.sharedInstance().students[indexPath.row]
+        let studentInfo = APIClients.sharedInstance().students[indexPath.row]
         cell.textLabel?.text = "\(studentInfo.firstName) \(studentInfo.lastName)"
         cell.detailTextLabel?.text = studentInfo.linkUrl
         return cell
@@ -30,13 +30,13 @@ class OTMTableViewController: UITableViewController {
     
     //Make URLS linkable and viewable
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let studentInfo = UdacityClient.sharedInstance().students[indexPath.row]
+        let studentInfo = APIClients.sharedInstance().students[indexPath.row]
         UIApplication.sharedApplication().openURL(NSURL(string: studentInfo.linkUrl)!)
         
     }
     
     @IBAction func refreshButton(sender: UIBarButtonItem) {
-        UdacityClient.sharedInstance().loadStudentInformation  { (success, errorString) -> Void in
+        APIClients.sharedInstance().loadStudentInformation  { (success, errorString) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 if success {
                     self.tableView.reloadData()

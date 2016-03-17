@@ -1,5 +1,5 @@
 //
-//  OTMUdacity.swift
+//  APIClients
 //  On The Map
 //
 //  Created by Joseph Hooper on 3/13/16.
@@ -9,13 +9,13 @@
 import Foundation
 import MapKit
 
-class UdacityClient: NSObject {
+class APIClients: NSObject {
     
-    var students: [StudentInfo]
     var accountKey: String?
     var firstName: String?
     var lastName: String?
     var sessionId: String?
+    var students: [StudentInfo]
     
     override init() {
         students = [StudentInfo]()
@@ -87,9 +87,9 @@ class UdacityClient: NSObject {
         task.resume()
     }
     
-    class func sharedInstance() -> UdacityClient {
+    class func sharedInstance() -> APIClients {
         struct Singleton {
-            static var sharedInstance = UdacityClient()
+            static var sharedInstance = APIClients()
         }
         return Singleton.sharedInstance
     }
@@ -97,7 +97,7 @@ class UdacityClient: NSObject {
     // Retrieve location data from Parse
     func loadStudentInformation(completionHandler: (success: Bool, errorString: String?) -> Void) {
         let parameters = ["order": "-updatedAt"]
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation" + UdacityClient.escapedParameters(parameters))!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation" + APIClients.escapedParameters(parameters))!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = NSURLSession.sharedSession()
