@@ -15,7 +15,7 @@
 		A430FA521C8E105400A7C021 /* On_The_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430FA511C8E105400A7C021 /* On_The_MapUITests.swift */; };
 		A43581511C9720CD00A2C267 /* OTMMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43581501C9720CD00A2C267 /* OTMMapViewController.swift */; };
 		A43581531C97215C00A2C267 /* OTMPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43581521C97215C00A2C267 /* OTMPinViewController.swift */; };
-		A4CD71F01C95B11800A3764B /* APIClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71EF1C95B11800A3764B /* APIClients.swift */; };
+		A4CD71F01C95B11800A3764B /* OTMClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71EF1C95B11800A3764B /* OTMClients.swift */; };
 		A4CD71F51C9613D000A3764B /* OTMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71F41C9613D000A3764B /* OTMTableViewController.swift */; };
 		A4CD71F71C961C4400A3764B /* OTMStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71F61C961C4400A3764B /* OTMStudents.swift */; };
 		A4CEBBA41C9A1EC10013DAED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A430FA381C8E105400A7C021 /* Assets.xcassets */; };
@@ -55,7 +55,7 @@
 		A430FA531C8E105400A7C021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43581501C9720CD00A2C267 /* OTMMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMMapViewController.swift; sourceTree = "<group>"; };
 		A43581521C97215C00A2C267 /* OTMPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OTMPinViewController.swift; path = "On The Map/OTMPinViewController.swift"; sourceTree = "<group>"; };
-		A4CD71EF1C95B11800A3764B /* APIClients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClients.swift; sourceTree = "<group>"; };
+		A4CD71EF1C95B11800A3764B /* OTMClients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClients.swift; sourceTree = "<group>"; };
 		A4CD71F41C9613D000A3764B /* OTMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMTableViewController.swift; sourceTree = "<group>"; };
 		A4CD71F61C961C4400A3764B /* OTMStudents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMStudents.swift; sourceTree = "<group>"; };
 		A4FEC9871C9340D4000155F0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -164,7 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				A4CD71F61C961C4400A3764B /* OTMStudents.swift */,
-				A4CD71EF1C95B11800A3764B /* APIClients.swift */,
+				A4CD71EF1C95B11800A3764B /* OTMClients.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -310,7 +310,7 @@
 				A4CD71F71C961C4400A3764B /* OTMStudents.swift in Sources */,
 				A4CD71F51C9613D000A3764B /* OTMTableViewController.swift in Sources */,
 				A43581511C9720CD00A2C267 /* OTMMapViewController.swift in Sources */,
-				A4CD71F01C95B11800A3764B /* APIClients.swift in Sources */,
+				A4CD71F01C95B11800A3764B /* OTMClients.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

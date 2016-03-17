@@ -89,7 +89,7 @@ class OTMPinViewController: UIViewController, MKMapViewDelegate, UITextFieldDele
             self.presentViewController(alert, animated: true, completion: nil)
             return
         }
-        APIClients.sharedInstance().submitStudentInformation(locationTextField.text!, mediaURL: linkTextField.text!, placemark: self.placemark) { (success, errorString) -> Void in
+        OTMClients.sharedInstance().submitStudentInformation(locationTextField.text!, mediaURL: linkTextField.text!, placemark: self.placemark) { (success, errorString) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 if (success) {
                     self.dismissViewControllerAnimated(true, completion: nil)

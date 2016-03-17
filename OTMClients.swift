@@ -1,5 +1,5 @@
 //
-//  APIClients
+//  OTMClients
 //  On The Map
 //
 //  Created by Joseph Hooper on 3/13/16.
@@ -9,7 +9,7 @@
 import Foundation
 import MapKit
 
-class APIClients: NSObject {
+class OTMClients: NSObject {
     
     var accountKey: String?
     var firstName: String?
@@ -87,9 +87,9 @@ class APIClients: NSObject {
         task.resume()
     }
     
-    class func sharedInstance() -> APIClients {
+    class func sharedInstance() -> OTMClients {
         struct Singleton {
-            static var sharedInstance = APIClients()
+            static var sharedInstance = OTMClients()
         }
         return Singleton.sharedInstance
     }
@@ -97,7 +97,7 @@ class APIClients: NSObject {
     // Retrieve location data from Parse
     func loadStudentInformation(completionHandler: (success: Bool, errorString: String?) -> Void) {
         let parameters = ["order": "-updatedAt"]
-        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation" + APIClients.escapedParameters(parameters))!)
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://api.parse.com/1/classes/StudentLocation" + OTMClients.escapedParameters(parameters))!)
         request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         let session = NSURLSession.sharedSession()

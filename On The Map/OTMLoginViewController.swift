@@ -50,7 +50,7 @@ class OTMLoginViewController: UIViewController, UITextFieldDelegate {
             self.presentViewController(alert, animated: true, completion: nil)
             return
 }
-       APIClients.sharedInstance().loginToUdacity(emailField.text!, password: passwordField.text!) { (success, errorString) -> Void in
+       OTMClients.sharedInstance().loginToUdacity(emailField.text!, password: passwordField.text!) { (success, errorString) -> Void in
             guard success else {
                 dispatch_async(dispatch_get_main_queue(), {
                     self.activityIndicator.stopAnimating()
