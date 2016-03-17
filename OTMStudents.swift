@@ -22,8 +22,5 @@ struct StudentInfo {
         latitude = dictionary["latitude"] as! Double
         longitude = dictionary["longitude"] as! Double
         
-        func fullName() -> String {
-            return firstName + " " + lastName
-        }
     }
 }

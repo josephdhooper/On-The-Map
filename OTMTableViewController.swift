@@ -23,7 +23,7 @@ class OTMTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LocationPin")!
         let studentInfo = UdacityClient.sharedInstance().students[indexPath.row]
-        cell.textLabel?.text = studentInfo.fullName()
+        cell.textLabel?.text = "\(studentInfo.firstName) \(studentInfo.lastName)"
         cell.detailTextLabel?.text = studentInfo.linkUrl
         return cell
     }

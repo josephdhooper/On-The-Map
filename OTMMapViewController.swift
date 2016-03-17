@@ -42,7 +42,7 @@ class OTMMapViewController: UIViewController, MKMapViewDelegate {
         for studentInfo in UdacityClient.sharedInstance().students {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: studentInfo.latitude, longitude: studentInfo.longitude)
-            annotation.title = studentInfo.fullName()
+            annotation.title = "\(studentInfo.firstName) \(studentInfo.lastName)"
             annotation.subtitle = studentInfo.linkUrl
             annotations.append(annotation)
         }
