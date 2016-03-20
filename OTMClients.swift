@@ -11,14 +11,15 @@ import MapKit
 
 class OTMClients: NSObject {
     
+    // MARK: - Properties
     var accountKey: String?
+    var key: String!
     var firstName: String?
     var lastName: String?
     var sessionId: String?
-    var students: [StudentInfo]
-    
+
+    // MARK: - Initializers
     override init() {
-        students = [StudentInfo]()
     }
 
     // Loging to Udacity Client - API
@@ -65,6 +66,7 @@ class OTMClients: NSObject {
     task.resume()
 }
     func getUserData(accountKey: String, completionHandler: (success: Bool, errorString: String?) -> Void) {
+        
         let request = NSMutableURLRequest(URL: NSURL(string: NSString(format: "https://www.udacity.com/api/users/%@", accountKey) as String)!)
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in// Error checking of response.
@@ -122,16 +124,16 @@ class OTMClients: NSObject {
                 completionHandler(success: false, errorString: "Server error: unparseable results array.")
                 return
             }
-            self.students.removeAll()
+            Students.sharedInstance().studentLocations.removeAll()
             for dictionary in resultsArray! {
                 let latitude = CLLocationDegrees(dictionary.objectForKey("latitude")! as! Double)
                 let longitude = CLLocationDegrees(dictionary.objectForKey("longitude")! as! Double)
                 
                 let firstName = dictionary.objectForKey("firstName") as! String
                 let lastName = dictionary.objectForKey("lastName") as! String
-                let linkUrl = dictionary.objectForKey("mediaURL") as! String
+                let mediaURL = dictionary.objectForKey("mediaURL") as! String
                 
-                self.students.append(StudentInfo(dictionary: ["firstName": firstName, "lastName": lastName, "linkUrl": linkUrl, "latitude": latitude, "longitude": longitude]))
+               Students.sharedInstance().studentLocations.append(StudentLocations(dictionary: ["firstName": firstName, "lastName": lastName, "mediaURL": mediaURL, "latitude": latitude, "longitude": longitude]))
             }
             completionHandler(success: true, errorString: nil)
         }
@@ -145,21 +147,22 @@ func submitStudentInformation(mapString: String, mediaURL: String, placemark: MK
     request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
     request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.HTTPBody = NSString(format: "{\"uniqueKey\": \"%@\", \"firstName\": \"%@\", \"lastName\": \"%@\",\"mapString\": \"%@\", \"mediaURL\": \"%@\",\"latitude\": %f, \"longitude\": %f}", accountKey!, firstName!, lastName!, mapString, mediaURL, placemark.coordinate.latitude, placemark.coordinate.longitude).dataUsingEncoding(NSUTF8StringEncoding)
+    
+    request.HTTPBody = NSString(format: "{\"uniqueKey\": \(User.uniqueKey)\"firstName\": \"%@\", \"lastName\": \"%@\",\"mapString\": \(User.mapString)\"mediaURL\": \"%@\",\"latitude\": %f, \"longitude\": %f}", accountKey!, firstName!, lastName!, mapString, mediaURL, placemark.coordinate.latitude, placemark.coordinate.longitude).dataUsingEncoding(NSUTF8StringEncoding)
+    
     let session = NSURLSession.sharedSession()
     let task = session.dataTaskWithRequest(request) { data, response, error in
         guard error == nil else {
             completionHandler(success: false, errorString: error?.description)
             return
         }
-        let studentInfo = StudentInfo(dictionary: ["firstName": self.firstName!, "lastName": self.lastName!, "linkUrl": mediaURL, "latitude": placemark.coordinate.latitude, "longitude": placemark.coordinate.longitude])
-        self.students.insert(studentInfo, atIndex: 0)
+        let studentInfo = StudentLocations(dictionary: ["firstName": self.firstName!, "lastName": self.lastName!, "mediaURL": mediaURL, "latitude": placemark.coordinate.latitude, "longitude": placemark.coordinate.longitude])
+        Students.sharedInstance().studentLocations.insert(studentInfo, atIndex: 0)
         completionHandler(success: true, errorString: nil)
     }
     task.resume()
 }
-    func logout ()
-    {
+    func logout () {
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
         request.HTTPMethod = "DELETE"
         var xsrfCookie: NSHTTPCookie? = nil
@@ -172,7 +175,7 @@ func submitStudentInformation(mapString: String, mediaURL: String, placemark: MK
         }
         let session = NSURLSession.sharedSession()
         let task = session.dataTaskWithRequest(request) { data, response, error in
-            if error != nil { // Handle error…
+            if error != nil { 
                 return
             }
         }

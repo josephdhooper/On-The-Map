@@ -8,19 +8,16 @@
 
 import Foundation
 
-struct StudentInfo {
-    var firstName: String
-    var lastName: String
-    var linkUrl: String
-    var latitude: Double
-    var longitude: Double
+class Students{
+    var studentLocations = [StudentLocations]()
+    var student: [String: AnyObject] = [String: AnyObject]()
     
-    init(dictionary: [String: AnyObject]) {
-        firstName = dictionary["firstName"] as! String
-        lastName = dictionary["lastName"] as! String
-        linkUrl = dictionary["linkUrl"] as! String
-        latitude = dictionary["latitude"] as! Double
-        longitude = dictionary["longitude"] as! Double
+    class func sharedInstance() -> Students{
         
+        struct Singleton{
+            static var sharedInstance = Students()
+        }
+        
+        return Singleton.sharedInstance
     }
 }

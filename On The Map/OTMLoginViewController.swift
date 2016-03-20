@@ -65,6 +65,8 @@ class OTMLoginViewController: UIViewController, UITextFieldDelegate {
             dispatch_async(dispatch_get_main_queue(), {
                 let tabBarController = self.storyboard?.instantiateViewControllerWithIdentifier("TabBarController") as! UITabBarController
                 self.presentViewController(tabBarController, animated: true, completion: nil)
+                self.activityIndicator.stopAnimating()
+
             })
         
         }

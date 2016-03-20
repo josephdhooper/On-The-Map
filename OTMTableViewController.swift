@@ -17,21 +17,21 @@ class OTMTableViewController: UITableViewController {
         tableView.reloadData()
 }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return OTMClients.sharedInstance().students.count
+        return Students.sharedInstance().studentLocations.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("LocationPin")!
-        let studentInfo = OTMClients.sharedInstance().students[indexPath.row]
-        cell.textLabel?.text = "\(studentInfo.firstName) \(studentInfo.lastName)"
-        cell.detailTextLabel?.text = studentInfo.linkUrl
+        let location = Students.sharedInstance().studentLocations[indexPath.row]
+        cell.textLabel?.text = "\(location.firstName) \(location.lastName)"
+        cell.detailTextLabel?.text = location.mediaURL
         return cell
     }
     
     //Make URLS linkable and viewable
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let studentInfo = OTMClients.sharedInstance().students[indexPath.row]
-        UIApplication.sharedApplication().openURL(NSURL(string: studentInfo.linkUrl)!)
+     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let location = Students.sharedInstance().studentLocations[indexPath.row]
+        UIApplication.sharedApplication().openURL(NSURL(string: location.mediaURL)!)
         
     }
     
@@ -58,8 +58,9 @@ class OTMTableViewController: UITableViewController {
     }
    
     @IBAction func logoutButton(sender: UIBarButtonItem) {
-        let loginController = self.storyboard!.instantiateViewControllerWithIdentifier("OTMLoginViewController") as! OTMLoginViewController
-        presentViewController(loginController, animated: true, completion: nil)
+        OTMClients.sharedInstance().logout()
+        dispatch_async(dispatch_get_main_queue()) {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
-    
 }

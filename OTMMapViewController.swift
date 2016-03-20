@@ -15,11 +15,8 @@ class OTMMapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
     
-    override func viewDidLoad()
-    {
-//        super.viewDidLoad()
-//        self.activityIndicator.startAnimating()
-//        self.activityIndicator.hidden = false
+    override func viewDidLoad() {
+        super.viewDidLoad()
         self.mapView.delegate = self
     }
     
@@ -39,11 +36,11 @@ class OTMMapViewController: UIViewController, MKMapViewDelegate {
 
     func addAnnotations() {
         var annotations = [MKPointAnnotation]()
-        for studentInfo in OTMClients.sharedInstance().students {
+        for studentInfo in Students.sharedInstance().studentLocations {
             let annotation = MKPointAnnotation()
             annotation.coordinate = CLLocationCoordinate2D(latitude: studentInfo.latitude, longitude: studentInfo.longitude)
             annotation.title = "\(studentInfo.firstName) \(studentInfo.lastName)"
-            annotation.subtitle = studentInfo.linkUrl
+            annotation.subtitle = studentInfo.mediaURL
             annotations.append(annotation)
         }
         mapView.addAnnotations(annotations)
@@ -54,7 +51,7 @@ class OTMMapViewController: UIViewController, MKMapViewDelegate {
         OTMClients.sharedInstance().loadStudentInformation  { (success, errorString) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 if success {
-//                    self.removeAnnotations()
+                    self.removeAnnotations()
                     self.addAnnotations()
                 } else {
                     let alert = UIAlertController(title: "Error", message: errorString, preferredStyle: UIAlertControllerStyle.Alert)
@@ -74,8 +71,10 @@ class OTMMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func logoutButton(sender: UIBarButtonItem) {
-        let loginController = self.storyboard!.instantiateViewControllerWithIdentifier("OTMLoginViewController") as! OTMLoginViewController
-        presentViewController(loginController, animated: true, completion: nil)
+       OTMClients.sharedInstance().logout()
+            dispatch_async(dispatch_get_main_queue()) {
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
 
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -99,7 +98,7 @@ func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutA
     
     } else {
         
-        self.displayURLAlert()
+        displayURLAlert()
     }
 }
     func displayURLAlert()
@@ -108,8 +107,6 @@ func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutA
         let alert = UIAlertController.init(title:"Link Error", message:"Invalid link.", preferredStyle: UIAlertControllerStyle.Alert)
         let okAction = UIAlertAction.init(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil)
         alert.addAction(okAction)
-        self.presentViewController(alert, animated: true, completion: nil)
+        presentViewController(alert, animated: true, completion: nil)
     }
 }
-
-

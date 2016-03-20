@@ -561,7 +561,7 @@
                     <navigationItem key="navigationItem" id="Di0-Jy-iGq">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="Bxf-MI-kVT">
                             <connections>
-                                <action selector="logoutButton:" destination="S6l-7R-fo6" id="c0h-wb-faB"/>
+                                <action selector="logoutButton:" destination="S6l-7R-fo6" id="Q3h-oZ-nl6"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>

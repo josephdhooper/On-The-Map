@@ -15,6 +15,8 @@
 		A430FA521C8E105400A7C021 /* On_The_MapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A430FA511C8E105400A7C021 /* On_The_MapUITests.swift */; };
 		A43581511C9720CD00A2C267 /* OTMMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43581501C9720CD00A2C267 /* OTMMapViewController.swift */; };
 		A43581531C97215C00A2C267 /* OTMPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43581521C97215C00A2C267 /* OTMPinViewController.swift */; };
+		A45F90241C9F0059003A7E66 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45F90231C9F0059003A7E66 /* User.swift */; };
+		A480760A1C9CE9DD003585A0 /* OTMStudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A48076091C9CE9DD003585A0 /* OTMStudentLocation.swift */; };
 		A4CD71F01C95B11800A3764B /* OTMClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71EF1C95B11800A3764B /* OTMClients.swift */; };
 		A4CD71F51C9613D000A3764B /* OTMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71F41C9613D000A3764B /* OTMTableViewController.swift */; };
 		A4CD71F71C961C4400A3764B /* OTMStudents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CD71F61C961C4400A3764B /* OTMStudents.swift */; };
@@ -55,6 +57,8 @@
 		A430FA531C8E105400A7C021 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A43581501C9720CD00A2C267 /* OTMMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMMapViewController.swift; sourceTree = "<group>"; };
 		A43581521C97215C00A2C267 /* OTMPinViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OTMPinViewController.swift; path = "On The Map/OTMPinViewController.swift"; sourceTree = "<group>"; };
+		A45F90231C9F0059003A7E66 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A48076091C9CE9DD003585A0 /* OTMStudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMStudentLocation.swift; sourceTree = "<group>"; };
 		A4CD71EF1C95B11800A3764B /* OTMClients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMClients.swift; sourceTree = "<group>"; };
 		A4CD71F41C9613D000A3764B /* OTMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMTableViewController.swift; sourceTree = "<group>"; };
 		A4CD71F61C961C4400A3764B /* OTMStudents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTMStudents.swift; sourceTree = "<group>"; };
@@ -123,6 +127,7 @@
 		A430FA301C8E105400A7C021 /* On The Map */ = {
 			isa = PBXGroup;
 			children = (
+				A45F901E1C9EF74B003A7E66 /* OTMClients */,
 				A4CD71F11C95B12600A3764B /* Model */,
 				A4CD71EE1C95ABB200A3764B /* Controller */,
 				A412B4F71C8E896F0017A51C /* Resources */,
@@ -148,6 +153,15 @@
 			path = "On The MapUITests";
 			sourceTree = "<group>";
 		};
+		A45F901E1C9EF74B003A7E66 /* OTMClients */ = {
+			isa = PBXGroup;
+			children = (
+				A4CD71EF1C95B11800A3764B /* OTMClients.swift */,
+			);
+			name = OTMClients;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		A4CD71EE1C95ABB200A3764B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,7 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				A4CD71F61C961C4400A3764B /* OTMStudents.swift */,
-				A4CD71EF1C95B11800A3764B /* OTMClients.swift */,
+				A48076091C9CE9DD003585A0 /* OTMStudentLocation.swift */,
+				A45F90231C9F0059003A7E66 /* User.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -307,7 +322,9 @@
 				A430FA341C8E105400A7C021 /* OTMLoginViewController.swift in Sources */,
 				A430FA321C8E105400A7C021 /* AppDelegate.swift in Sources */,
 				A43581531C97215C00A2C267 /* OTMPinViewController.swift in Sources */,
+				A480760A1C9CE9DD003585A0 /* OTMStudentLocation.swift in Sources */,
 				A4CD71F71C961C4400A3764B /* OTMStudents.swift in Sources */,
+				A45F90241C9F0059003A7E66 /* User.swift in Sources */,
 				A4CD71F51C9613D000A3764B /* OTMTableViewController.swift in Sources */,
 				A43581511C9720CD00A2C267 /* OTMMapViewController.swift in Sources */,
 				A4CD71F01C95B11800A3764B /* OTMClients.swift in Sources */,
