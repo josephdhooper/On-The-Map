@@ -10,12 +10,14 @@ import Foundation
 import MapKit
 import UIKit
 
-class OTMTableViewController: UITableViewController {
+class OTMTableViewController: UITableViewController  {
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         tableView.reloadData()
-}
+    
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Students.sharedInstance().studentLocations.count
     }
