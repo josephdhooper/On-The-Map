@@ -11,13 +11,6 @@ import MapKit
 
 class OTMClients: NSObject {
     
-    // MARK: - Properties
-    var accountKey: String?
-    var key: String!
-    var firstName: String?
-    var lastName: String?
-    var sessionId: String?
-
     // MARK: - Initializers
     override init() {
     }
@@ -52,7 +45,7 @@ class OTMClients: NSObject {
         }
         // Record account key and session id
         let accountKey = ((parsedResult["account"] as! [String: AnyObject])["key"] as! String)
-        self.sessionId = ((parsedResult["session"] as! [String: AnyObject])["id"] as! String)
+        User.sessionId = ((parsedResult["session"] as! [String: AnyObject])["id"] as! String)
         self.getUserData(accountKey, completionHandler: { (success, errorString) -> Void in
             if (success) {
                 self.loadStudentInformation({ (success, errorString) -> Void in
@@ -81,9 +74,9 @@ class OTMClients: NSObject {
     
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
             let parsedResult = try! NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
-            self.firstName = ((parsedResult["user"] as! [String: AnyObject])["first_name"] as! String)
-            self.lastName = ((parsedResult["user"] as! [String: AnyObject])["last_name"] as! String)
-            self.accountKey = accountKey
+            User.firstName = ((parsedResult["user"] as! [String: AnyObject])["first_name"] as! String)
+            User.lastName = ((parsedResult["user"] as! [String: AnyObject])["last_name"] as! String)
+            User.accountKey = accountKey
             completionHandler(success: true, errorString: nil)
         }
         task.resume()
@@ -148,7 +141,7 @@ func submitStudentInformation(mapString: String, mediaURL: String, placemark: MK
     request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     
-    request.HTTPBody = NSString(format: "{\"uniqueKey\": \(User.uniqueKey)\"firstName\": \"%@\", \"lastName\": \"%@\",\"mapString\": \(User.mapString)\"mediaURL\": \"%@\",\"latitude\": %f, \"longitude\": %f}", accountKey!, firstName!, lastName!, mapString, mediaURL, placemark.coordinate.latitude, placemark.coordinate.longitude).dataUsingEncoding(NSUTF8StringEncoding)
+    request.HTTPBody = NSString(format: "{\"uniqueKey\": \(User.uniqueKey)\"firstName\": \(User.firstName)\"lastName\": \(User.firstName)\"mapString\": \(User.mapString)\"mediaURL\": \"%@\",\"latitude\": %f, \"longitude\": %f}", User.accountKey, User.firstName, User.lastName, mapString, mediaURL, placemark.coordinate.latitude, placemark.coordinate.longitude).dataUsingEncoding(NSUTF8StringEncoding)
     
     let session = NSURLSession.sharedSession()
     let task = session.dataTaskWithRequest(request) { data, response, error in
@@ -156,7 +149,7 @@ func submitStudentInformation(mapString: String, mediaURL: String, placemark: MK
             completionHandler(success: false, errorString: error?.description)
             return
         }
-        let studentInfo = StudentLocations(dictionary: ["firstName": self.firstName!, "lastName": self.lastName!, "mediaURL": mediaURL, "latitude": placemark.coordinate.latitude, "longitude": placemark.coordinate.longitude])
+        let studentInfo = StudentLocations(dictionary: ["firstName": User.firstName, "lastName": User.lastName, "mediaURL": mediaURL, "latitude": placemark.coordinate.latitude, "longitude": placemark.coordinate.longitude])
         Students.sharedInstance().studentLocations.insert(studentInfo, atIndex: 0)
         completionHandler(success: true, errorString: nil)
     }

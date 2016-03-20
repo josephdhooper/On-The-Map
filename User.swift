@@ -18,4 +18,7 @@ struct User {
     static var latitude = 0.0
     static var mapString = ""
     static var mediaURL = ""
+    static var accountKey = ""
+    static var sessionId = ""
+    
 }
