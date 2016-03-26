@@ -46,6 +46,7 @@ class OTMLoginViewController: UIViewController, UITextFieldDelegate {
         self.activityIndicator.startAnimating()
         guard (!emailField.text!.isEmpty && !passwordField.text!.isEmpty) else {
             let alert = UIAlertController(title: "Error", message: "Email and/or password field is empty.", preferredStyle: UIAlertControllerStyle.Alert)
+             self.activityIndicator.stopAnimating()
             alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default, handler: nil))
             self.presentViewController(alert, animated: true, completion: nil)
             return
